@@ -3,9 +3,10 @@ import 'package:quizzles/widget/question_widhet.dart';
 import '../models/question_model.dart';
 
 class CustomQuestion extends StatelessWidget {
-   CustomQuestion({Key? key,required this.questionModel, required this.length}) : super(key: key);
+   CustomQuestion({Key? key,required this.questionModel, required this.length,required this.level}) : super(key: key);
    QuestionModel questionModel;
-   int length;
+   dynamic length;
+   int level;
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -26,6 +27,8 @@ class CustomQuestion extends StatelessWidget {
             ),
             Expanded(
                 child: ChoiceQuestionsListView(
+                  level: level,
+                  questionId: questionModel.id!,
                   correctAnswer: questionModel.correct_answer,
                   incorrectAnswersList: questionModel.incorrect_answers,
                 )

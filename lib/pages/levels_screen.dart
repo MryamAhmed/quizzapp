@@ -21,7 +21,7 @@ class LevelsScreen extends StatelessWidget {
       ),
 
       body: Padding(
-        padding: const EdgeInsets.only(top: 26),
+        padding: const EdgeInsets.only(top: 30),
         child: ListView.builder(
           itemCount: 3,
           itemBuilder: (BuildContext context, int index) {

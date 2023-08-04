@@ -5,8 +5,9 @@ class QuestionService{
   Future<dynamic> getQuestions() async{
     print('hiiiiiiiiii');
 
-   Map<dynamic,dynamic> data = await Api().get(url:'https://opentdb.com/api.php?amount=16');
+   Map<dynamic,dynamic> data = await Api().get(url:'https://opentdb.com/api.php?amount=15&difficulty=easy&type=multiple');
 
+   //https://opentdb.com/api.php?amount=30&category=27&type=multiple
 
    //ask????
    //List<QuestionModel> questionList =[] ;

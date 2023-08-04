@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class  CasheHelper {
@@ -10,10 +9,12 @@ class  CasheHelper {
 
   Future<bool> putData({
   required String key,
-  required int value,
-})async{
+  required int level1,
+    required int level2,
+    required int level3,
+  })async{
     return await
-    sharedPreferences!.setInt(key, value);
+    sharedPreferences!.setInt(key, level1);
   }
 
 

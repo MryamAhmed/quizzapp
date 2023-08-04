@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizzles/cubits/quizz/quiz_cubit.dart';
 
 class Choice_questions extends StatefulWidget {
@@ -7,16 +6,11 @@ class Choice_questions extends StatefulWidget {
   this.isSelected,
     required this.choice,
     required this.number,
-    //required this.AllAnswers,
-    //required this.choisenIndex
   }) : super(key: key);
 
   final bool isSelected;
   final String choice;
   final String number;
-
-  //int choisenIndex;
-  //List AllAnswers;
 
   @override
   State<Choice_questions> createState() => _Choice_questionsState();
@@ -97,11 +91,13 @@ class _Choice_questionsState extends State<Choice_questions> {
 
 class ChoiceQuestionsListView extends StatefulWidget {
   ChoiceQuestionsListView(
-      {Key? key, required this.incorrectAnswersList, required this.correctAnswer})
+      {Key? key, required this.incorrectAnswersList, required this.correctAnswer,required this.questionId,required this.level })
       : super(key: key);
 
   List<dynamic> incorrectAnswersList;
   String correctAnswer;
+  int questionId;
+  int level;
 
   @override
   State<ChoiceQuestionsListView> createState() =>
@@ -110,19 +106,23 @@ class ChoiceQuestionsListView extends StatefulWidget {
 
 class _ChoiceQuestionsListViewState extends State<ChoiceQuestionsListView> {
   int currentIndex = 0;
-  List<dynamic> allAnswers = [];
   List<dynamic> numbers = [ 'a', 'b', 'c', 'd'];
+  List<dynamic> allAnswers = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    var quizCubit = QuizCubit.get(context) ;
+
+    allAnswers=quizCubit.MakeACombleteList(correcrAnswer: widget.correctAnswer,incorrectAnswersList: widget. incorrectAnswersList);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<QuizCubit, QuizState>(
-      listener: (context, state) {
-        if(state is QuizInitial){
-          allAnswers = BlocProvider.of<QuizCubit>(context).MakeACombleteList(correcrAnswer: widget.correctAnswer,
-              incorrectAnswersList: widget.incorrectAnswersList);
-        }
-      },
-      child: ListView.builder(
+    var quizCubit = QuizCubit.get(context) ;
+
+    return ListView.builder(
         shrinkWrap: true,
         itemCount: 4,
         itemBuilder: (BuildContext context, int index) {
@@ -132,12 +132,13 @@ class _ChoiceQuestionsListViewState extends State<ChoiceQuestionsListView> {
                 onTap: () {
                   currentIndex = index;
                   setState(() {
-
                   });
+                  quizCubit.CountScore(correcrAnswer: widget.correctAnswer ,
+                    choisenAnswer: allAnswers[currentIndex],
+                    id: widget.questionId,
+                  levelNumber: widget.level);
                 },
                 child: Choice_questions(
-                  //choisenIndex: currentIndex,
-                  //AllAnswers: allAnswers,
                   isSelected: currentIndex == index,
                   choice: allAnswers[index],
                   number: numbers[index],
@@ -145,8 +146,8 @@ class _ChoiceQuestionsListViewState extends State<ChoiceQuestionsListView> {
             ),
 
           );
-        },),
-    );
+        },);
+
   }
 }
 

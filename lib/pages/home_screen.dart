@@ -11,31 +11,39 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: kPrimaryColor,
+        appBar: AppBar(
+          backgroundColor: kPrimaryColor,
+        ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
               'assets/images/logo.jpg',
-              width: 100,
-              height: 100,
+              width: 300,
+              height: 300,
             ),
             const Text(
               'Quizzles',
               style: TextStyle(
-                  fontSize: 55,
+                  fontSize: 45,
                   fontWeight: FontWeight.bold,
                   color: Color(0xff3FBBB7)),
             ),
+            SizedBox(height: 8*4),
+
             const Text(
               'Let\'s play!',
               style: TextStyle(
-                  color: Colors.white)
+                  color: Colors.white,fontWeight :FontWeight.bold)
               ,),
+            SizedBox(height: 8),
             const Text(
               'play now and level up',
               style: TextStyle(
                   color: Colors.white),
             ),
+
+            SizedBox(height: 8*7),
             Button(
                 text:'Play Now' ,
 
@@ -45,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                 );},
 
             ),
-
+            SizedBox(height: 8*3),
             Padding(
               padding: const EdgeInsets.only(right: 20,left: 20),
               child: Container(

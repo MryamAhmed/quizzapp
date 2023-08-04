@@ -2,18 +2,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../constant.dart';
+import '../cubits/level/level_cubit.dart';
+import '../cubits/quizz/quiz_cubit.dart';
 import '../widget/button.dart';
 import '../widget/custom_score.dart';
 import 'levels_screen.dart';
 
-class ScoreScreen extends StatelessWidget {
-  const ScoreScreen({Key? key}) : super(key: key);
+class ScoreScreen extends StatefulWidget {
+   ScoreScreen({Key? key,required this.level}) : super(key: key);
+   int level;
+
+  @override
+  State<ScoreScreen> createState() => _ScoreScreenState();
+}
+
+class _ScoreScreenState extends State<ScoreScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var quizCubit = QuizCubit.get(context) ;
+    int numberOfCorrectQuestions=quizCubit.levelsCountersList[widget.level];
+    quizCubit.restartCount();
     return Scaffold(
         backgroundColor: kPrimaryColor,
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
         title: const Center(
           child:  Text(
             'Results',
@@ -25,7 +40,7 @@ class ScoreScreen extends StatelessWidget {
         backgroundColor: const Color(0xff29155C),
       ),
       body:  Padding(
-        padding: const EdgeInsets.only(bottom: 16,right: 24,left: 24,top: 16),
+        padding:  EdgeInsets.only(bottom: 16,right: 24,left: 24,top: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,17 +49,19 @@ class ScoreScreen extends StatelessWidget {
               style: TextStyle(
                   color: Colors.white),
             ),
-            SizedBox(height: 5,),
-            const Text(
-              '2 oyt of 3 questions  ',
-              style: TextStyle(
+            const SizedBox(height: 8,),
+             Text(
+              '${numberOfCorrectQuestions} out of 9 questions',
+              style: const TextStyle(
                   color: Color(0xFF46BDAD)
               ),
             ),
-            CustomResult(score: 60),
-            Spacer(),
+            const SizedBox(height: 5*8,),
+            CustomResult(score:numberOfCorrectQuestions),
+            const Spacer(),
             Button(
-              text: 'play again ',
+              icon: Icons.arrow_back,
+              text: 'Tray Again ',fontSize: 20,
               ontap: (){
                 Navigator.push(
                   context,
@@ -53,7 +70,7 @@ class ScoreScreen extends StatelessWidget {
               },
 
             ),
-            Spacer()
+            const Spacer()
           ],
         ),
       )
