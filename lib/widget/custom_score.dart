@@ -18,7 +18,7 @@ class CustomResult extends StatelessWidget {
       ),
       child:  Column(
         children: [
-          Spacer(),
+          const Spacer(),
           const Padding(
             padding: EdgeInsets.only(top: 50,bottom: 24),
             child: Text(
@@ -26,16 +26,20 @@ class CustomResult extends StatelessWidget {
               style: TextStyle(color: Colors.white,fontSize: 33,fontWeight: FontWeight.bold),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           CircleAvatar(
             radius: 95,
-            backgroundColor: Color(0xffF8C727),
+            backgroundColor: const Color(0xffF8C727),
             child: Text(
               score.toString(),
-              style: TextStyle(color: Colors.white,fontSize: 65,fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 65,
+                  fontWeight: FontWeight.bold
+              ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );

@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Button extends StatelessWidget {
-  Button({required this.text,this.ontap,@required this.width=double.infinity,@required this.height=50, this.fontSize,this.icon,}) ;
+  Button({required this.text,this.ontap,this.fontSize,this.icon,}) ;
   String  text;
   VoidCallback?ontap;
-  double? width;
-  double? height;
   double? fontSize;
   IconData? icon ;
   @override
@@ -17,8 +14,7 @@ class Button extends StatelessWidget {
       child: GestureDetector(
         onTap: ontap,
         child: Container(
-          width: width,
-          height: height,
+          height: 45,
           decoration: BoxDecoration(
             color: Color(0xff6B50DB),
             borderRadius: BorderRadius.circular(15),
@@ -27,9 +23,13 @@ class Button extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(icon,color: Colors.white,),
-              SizedBox(width: 20),
+              const SizedBox(
+                  width: 20),
               Text(
-                text,style: TextStyle(
+                text,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
                   color:Colors.white,fontSize: fontSize
               ),),
               //Icon(FontAwesomeIcons.gamepad),

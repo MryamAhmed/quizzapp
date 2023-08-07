@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Color(0xff3FBBB7)),
             ),
-            SizedBox(height: 8*4),
+            const SizedBox(height: 8*4),
 
             const Text(
               'Let\'s play!',

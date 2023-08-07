@@ -59,6 +59,7 @@ class QuizCubit extends Cubit<QuizState> {
     }
     emit(LevelChoice());
   }
+  /*
   void restartCount(){
     levelsCountersList[0]=0;
     levelsCountersList[1]=0;
@@ -70,6 +71,8 @@ class QuizCubit extends Cubit<QuizState> {
 
   }
 
+
+   */
   List<dynamic> MakeACombleteList({required String correcrAnswer,required List<dynamic> incorrectAnswersList})
   {
     List<dynamic> allAnswers = [];

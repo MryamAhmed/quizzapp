@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../constant.dart';
-import '../cubits/level/level_cubit.dart';
 import '../cubits/quizz/quiz_cubit.dart';
 import '../widget/button.dart';
 import '../widget/custom_score.dart';
@@ -22,11 +21,14 @@ class _ScoreScreenState extends State<ScoreScreen> {
   Widget build(BuildContext context) {
     var quizCubit = QuizCubit.get(context) ;
     int numberOfCorrectQuestions=quizCubit.levelsCountersList[widget.level];
-    quizCubit.restartCount();
+    int levelScore  = numberOfCorrectQuestions;
+    int x= levelScore ;
+
+
     return Scaffold(
         backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.white,
         ),
         title: const Center(
@@ -40,7 +42,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
         backgroundColor: const Color(0xff29155C),
       ),
       body:  Padding(
-        padding:  EdgeInsets.only(bottom: 16,right: 24,left: 24,top: 16),
+        padding:  const EdgeInsets.only(bottom: 16,right: 24,left: 24,top: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -51,13 +53,14 @@ class _ScoreScreenState extends State<ScoreScreen> {
             ),
             const SizedBox(height: 8,),
              Text(
-              '${numberOfCorrectQuestions} out of 9 questions',
+              '${x} out of 9 questions',
               style: const TextStyle(
                   color: Color(0xFF46BDAD)
               ),
             ),
-            const SizedBox(height: 5*8,),
-            CustomResult(score:numberOfCorrectQuestions),
+            const SizedBox(
+              height: 5*8,),
+            CustomResult(score:x),
             const Spacer(),
             Button(
               icon: Icons.arrow_back,
@@ -70,7 +73,6 @@ class _ScoreScreenState extends State<ScoreScreen> {
               },
 
             ),
-            const Spacer()
           ],
         ),
       )

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizzles/widget/question_widhet.dart';
+import 'package:quizzles/widget/question_widget.dart';
 import '../models/question_model.dart';
 
 class CustomQuestion extends StatelessWidget {
@@ -10,7 +10,7 @@ class CustomQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding: const EdgeInsets.only(bottom: 16,right: 16,left: 16,top: 50),
+      padding: const EdgeInsets.only(bottom: 16,right: 16,left: 16,top: 10),
       child: SizedBox(
         height: 220,
         child: Column(
@@ -19,11 +19,12 @@ class CustomQuestion extends StatelessWidget {
           children: [
             Text(
                 questionModel.question,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                     color: Colors.white)
             ),
             const SizedBox(
-              height: 5,
+              height: 8,
             ),
             Expanded(
                 child: ChoiceQuestionsListView(
