@@ -20,6 +20,7 @@ class CustomQuestion extends StatelessWidget {
             Text(
                 questionModel.question,
                 overflow: TextOverflow.ellipsis,
+
                 style: const TextStyle(
                     color: Colors.white)
             ),

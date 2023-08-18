@@ -1,29 +1,22 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 class  CasheHelper {
-  static SharedPreferences? sharedPreferences ;
+  static SharedPreferences? sharedPreferences;
 
-  static init() async{
-    sharedPreferences =await SharedPreferences.getInstance();
+  static init() async {
+    sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  Future<bool> putData({
-  required String key,
-  required int level1,
-    required int level2,
-    required int level3,
-  })async{
-    return await
-    sharedPreferences!.setInt(key, level1);
+  static void setIntList(String key, List<int> valueList) async {
+    List<String> stringList = valueList.map((e) => e.toString()).toList();
+    sharedPreferences!.setStringList(key, stringList);
   }
 
+  static List<int> getIntList(String key)  {
+    List<String>? stringList = sharedPreferences!.getStringList(key);
 
-  static int getData({
-    required String key,
-    required int value,
-  }){
+      return stringList!.map((e) => int.parse(e)).toList();
 
-    return sharedPreferences!.getInt(key)!;
   }
-
 }

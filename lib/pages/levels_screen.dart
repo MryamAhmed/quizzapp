@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../constant.dart';
-import '../cubits/quizz/quiz_cubit.dart';
 import '../widget/levels.dart';
 
 class LevelsScreen extends StatelessWidget {

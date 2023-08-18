@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../cubits/quizz/quiz_cubit.dart';
 
 class CustomResult extends StatelessWidget {

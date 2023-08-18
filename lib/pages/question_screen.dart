@@ -8,22 +8,22 @@ import '../widget/custom_question.dart';
 
 
 class QuestionScreen extends StatelessWidget {
-   QuestionScreen({Key? key,required this.levelNumber}) : super(key: key);
+   const QuestionScreen({Key? key,required this.levelNumber }) : super(key: key);
 
-  int levelNumber;
+  final int levelNumber ;
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
         backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        title: const Center(
+        title:  Center(
           child: Text(
-            'Levels',
-            style: TextStyle(
+            'Level ${levelNumber+1}',
+            style: const TextStyle(
                 color: Color(0xFF46BDAD)),),
         ),
-        backgroundColor: Color(0xff29155C),
+        backgroundColor: const Color(0xff29155C),
       ),
 
       body:Padding(

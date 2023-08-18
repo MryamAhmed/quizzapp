@@ -7,6 +7,7 @@ import '../../helper/cashehelper.dart';
 part 'quiz_state.dart';
 
 class QuizCubit extends Cubit<QuizState> {
+
   QuizCubit() : super(QuizInitial());
 
   int scoreCounter =0;
@@ -20,6 +21,7 @@ class QuizCubit extends Cubit<QuizState> {
   Set<int> level3AnsweredQuestions = {};
 
   List<int>levelsCountersList=[0,0,0];
+
 
   void CountScore({required String correcrAnswer,required String choisenAnswer,id,levelNumber}) {
 
@@ -57,22 +59,32 @@ class QuizCubit extends Cubit<QuizState> {
       print(levelsCountersList);
       print(levelNumber);
     }
-    emit(LevelChoice());
-  }
-  /*
-  void restartCount(){
-    levelsCountersList[0]=0;
-    levelsCountersList[1]=0;
-    levelsCountersList[2]=0;
 
-    level1AnsweredQuestions = {};
-    level2AnsweredQuestions = {};
-    level3AnsweredQuestions = {};
+    saveList(levelsCountersList);
+    emit(QuizLevelChoice());
 
   }
+  void restartCount({required int index}){
+    if(index == 0){
+      levelsCountersList[index]=0;
+      level1AnsweredQuestions = {};
+
+      levelsCountersList[1]=0;
+      level2AnsweredQuestions = {};
+    }
+    else if(index == 1){
+      levelsCountersList[index]=0;
+      level2AnsweredQuestions = {};
+    }
+    else if(index == 2){
+      levelsCountersList[index]=0;
+      level3AnsweredQuestions = {};
+    }
+    saveList(levelsCountersList);
+    emit(QuizRestartList());
+  }
 
 
-   */
   List<dynamic> MakeACombleteList({required String correcrAnswer,required List<dynamic> incorrectAnswersList})
   {
     List<dynamic> allAnswers = [];
@@ -88,6 +100,29 @@ class QuizCubit extends Cubit<QuizState> {
     }
 
 
+
+  void saveList(List<int> scoreList) {
+    CasheHelper.setIntList("scoreList", scoreList);
+  }
+
+  List<int> getList(){
+    List<int> myList = CasheHelper.getIntList("scoreList");
+      return myList;
+
+  }
+
+
+
+  /*
+  bool constrians(int level){
+    List<int> myList = getList();
+    if(myList[level] >= 5){
+      return true;
+    }else
+      return false;
+  }
+
+ */
 
 }
 

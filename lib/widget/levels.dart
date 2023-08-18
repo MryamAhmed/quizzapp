@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import '../constant.dart';
 import '../cubits/level/level_cubit.dart';
 import '../cubits/quizz/quiz_cubit.dart';
+import '../helper/cashehelper.dart';
 import '../pages/question_screen.dart';
 
 class LevelCard extends StatefulWidget {
   final int level;
-
   const LevelCard(this.level);
 
   @override
@@ -14,10 +14,8 @@ class LevelCard extends StatefulWidget {
 }
 
 class _LevelCardState extends State<LevelCard> {
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     var levelCubit = LevelCubit.get(context);
     var quizCubit = QuizCubit.get(context);
@@ -28,6 +26,9 @@ class _LevelCardState extends State<LevelCard> {
   Widget build(BuildContext context) {
     var quizCubit = QuizCubit.get(context);
     var levelCubit = LevelCubit.get(context);
+    //bool x= quizCubit.constrians(widget.level-1);
+    //List<int> myList = CasheHelper.getIntList('scoreList');
+
     List<int> levelsCountersList = quizCubit.levelsCountersList;
 
     if(widget.level == 0) {
@@ -40,6 +41,7 @@ class _LevelCardState extends State<LevelCard> {
                   builder: (context) => QuestionScreen(levelNumber: widget.level,)
               ),
             );
+            quizCubit.restartCount(index: widget.level);
           },
           child: Stack(
             clipBehavior: Clip.none,
@@ -87,6 +89,9 @@ class _LevelCardState extends State<LevelCard> {
               MaterialPageRoute(
                   builder: (context) => QuestionScreen(levelNumber: widget.level,)
               ),
+            );
+            quizCubit.restartCount(
+              index :widget.level
             );
           },
           child: Stack(
@@ -155,7 +160,7 @@ class _LevelCardState extends State<LevelCard> {
                 child: Container(
 
                     child:
-                    Row(
+                    const Row(
                       children: [
                         Icon(Icons.star, color: Colors.grey ),
                         Icon(Icons.star, color: Colors.grey),
@@ -181,7 +186,6 @@ class _LevelCardState extends State<LevelCard> {
           ),
         );
     }
-
 
     /*
       return

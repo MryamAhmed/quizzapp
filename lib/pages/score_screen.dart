@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../constant.dart';
 import '../cubits/quizz/quiz_cubit.dart';
 import '../widget/button.dart';
@@ -64,7 +63,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
             const Spacer(),
             Button(
               icon: Icons.arrow_back,
-              text: 'Tray Again ',fontSize: 20,
+              text: 'Continue',fontSize: 20,
               ontap: (){
                 Navigator.push(
                   context,

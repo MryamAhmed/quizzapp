@@ -5,4 +5,5 @@ abstract class QuizState {}
 
 class QuizInitial extends QuizState {}
 
-class LevelChoice extends QuizState {}
+class QuizLevelChoice extends QuizState {}
+class QuizRestartList extends QuizState {}
