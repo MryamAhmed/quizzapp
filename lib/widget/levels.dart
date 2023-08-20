@@ -24,7 +24,6 @@ class _LevelCardState extends State<LevelCard> {
     var levelCubit = LevelCubit.get(context);
     var quizCubit = QuizCubit.get(context);
     levelCubit.handleStars(
-
         levelScore: CasheHelper.getIntList("scoreList")[widget.level]
     );
   }
@@ -45,7 +44,7 @@ class _LevelCardState extends State<LevelCard> {
                         levelNumber: widget.level,
                       )),
             );
-            quizCubit.restartCount(index: widget.level);
+            quizCubit.levelsCountersList[widget.level] =0;
           },
           child: Stack(
             clipBehavior: Clip.none,
@@ -104,7 +103,7 @@ class _LevelCardState extends State<LevelCard> {
                         levelNumber: widget.level,
                       )),
             );
-            quizCubit.restartCount(index: widget.level);
+            quizCubit.levelsCountersList[widget.level] =0;
           },
           child: Stack(
             clipBehavior: Clip.none,

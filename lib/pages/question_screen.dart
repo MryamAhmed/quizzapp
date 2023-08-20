@@ -37,49 +37,12 @@ class QuestionScreen extends StatelessWidget {
                 future: QuestionService().getQuestions(),
                 builder: (context,snapshot){
                   if(snapshot.hasData){
-                    //List<QuestionModel> questionList = snapshot.data!; // ask????
-                    /*
-                    List<dynamic> FirstLevelList =[];
-                    List<dynamic> SecondLevelList =[];
-                    List<dynamic> ThirdLevelHardList =[];
-                    List<List<dynamic>> allLevelsList = [];
-
-                     */
                     Map<dynamic,dynamic> x= snapshot.data!;
                     List<dynamic> questionList = x['results'];
-                    /*
-                    for(int i = 0 ; i<x.length ; i++){
-                      if(questionList[i]['difficulty']== 'easy'){
-                        questionEsyList.add(questionList[i]);
-                      }else if(questionList[i]['difficulty']== 'medium'){
-                        questionMediumList.add(questionList[i]);
-                      }else{
-                        questionHardList.add(questionList[i]);
-                      }
-                }
-
-                     */
-                    /*
-                    for(int i =0;i<15;i++){
-                      if(i<5){
-                        FirstLevelList.add(questionList[i]);
-                      }else  if(i<10){
-                        SecondLevelList.add(questionList[i]);
-                      }
-                      else  if(i<15){
-                        ThirdLevelHardList.add(questionList[i]);
-                      }
-                    }
-
-                    allLevelsList.add(FirstLevelList);
-                    allLevelsList.add(SecondLevelList);
-                    allLevelsList.add(ThirdLevelHardList);
-
-                     */
 
                     return
                         Expanded(
-                          child: ListView.builder(   //Pagina.builder
+                          child: ListView.builder(
                             itemCount: 9,
                               itemBuilder: (BuildContext context, int index) {
                                 return CustomQuestion(

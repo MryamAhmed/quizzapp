@@ -19,10 +19,25 @@ class _ScoreScreenState extends State<ScoreScreen> {
   @override
   Widget build(BuildContext context) {
     var quizCubit = QuizCubit.get(context) ;
-    int numberOfCorrectQuestions=quizCubit.levelsCountersList[widget.level];
-    int levelScore  = numberOfCorrectQuestions;
-    int x= levelScore ;
 
+
+    List<int> cashList= quizCubit.getList(key: 'scoreList');
+    List<int> newList= quizCubit.getList(key: 'scoreList');
+
+    int result = cashList[widget.level];
+    int newScore = quizCubit.levelsCountersList2[widget.level] ;
+
+    print('it is $newScore');
+
+    if(newScore > result){
+      result = newScore;
+      quizCubit.getList(key: 'scoreList')[widget.level] =  newScore;
+      newList[widget.level] =  newScore;
+      quizCubit.saveList(newList, 'scoreList');
+
+      cashList=[0,0,0];
+    }
+    quizCubit.initSets();
 
     return Scaffold(
         backgroundColor: kPrimaryColor,
@@ -52,18 +67,19 @@ class _ScoreScreenState extends State<ScoreScreen> {
             ),
             const SizedBox(height: 8,),
              Text(
-              '${x} out of 9 questions',
+              '${result} out of 9 questions',
               style: const TextStyle(
                   color: Color(0xFF46BDAD)
               ),
             ),
             const SizedBox(
               height: 5*8,),
-            CustomResult(score:x),
+            CustomResult(score:result),
             const Spacer(),
             Button(
               icon: Icons.arrow_back,
-              text: 'Continue',fontSize: 20,
+              text: 'Continue',
+              fontSize: 20,
               ontap: (){
                 Navigator.push(
                   context,

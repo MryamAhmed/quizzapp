@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-
 import '../../helper/cashehelper.dart';
-
+import '../../helper/cashehelper.dart';
+import '../../helper/cashehelper.dart';
 part 'quiz_state.dart';
 
 class QuizCubit extends Cubit<QuizState> {
@@ -19,6 +19,15 @@ class QuizCubit extends Cubit<QuizState> {
   Set<int> level3AnsweredQuestions = {};
 
   List<int> levelsCountersList = [0, 0, 0];
+  List<int> levelsCountersList2 = [0, 0, 0];
+
+  void initSets(){
+    level1AnsweredQuestions = {};
+    level2AnsweredQuestions = {};
+    level3AnsweredQuestions = {};
+    levelsCountersList2 = [0, 0, 0];
+
+  }
 
   void CountScore(
       {required String correcrAnswer,
@@ -29,6 +38,7 @@ class QuizCubit extends Cubit<QuizState> {
       if (!level1AnsweredQuestions.contains(id)) {
         if (choisenAnswer == correcrAnswer) {
           levelsCountersList[levelNumber]++;
+          levelsCountersList2[levelNumber]++;
           scoreCounter++;
           level1AnsweredQuestions.add(id);
         }
@@ -40,6 +50,7 @@ class QuizCubit extends Cubit<QuizState> {
       if (!level2AnsweredQuestions.contains(id)) {
         if (choisenAnswer == correcrAnswer) {
           levelsCountersList[levelNumber]++;
+          levelsCountersList2[levelNumber]++;
           scoreCounter++;
           level2AnsweredQuestions.add(id);
         }
@@ -50,6 +61,7 @@ class QuizCubit extends Cubit<QuizState> {
       if (!level3AnsweredQuestions.contains(id)) {
         if (choisenAnswer == correcrAnswer) {
           levelsCountersList[levelNumber]++;
+          levelsCountersList2[levelNumber]++;
           scoreCounter++;
           level3AnsweredQuestions.add(id);
         }
@@ -58,27 +70,43 @@ class QuizCubit extends Cubit<QuizState> {
       print(levelNumber);
     }
 
-    saveList(levelsCountersList);
+    saveList(levelsCountersList, "scoreList");
     emit(QuizLevelChoice());
   }
 
+  /*
   void restartCount({required int index}) {
     if (index == 0) {
-      levelsCountersList[index] = 0;
+      //restart level 1
+      CasheHelper.getIntList("scoreList")[index] = 0;
       level1AnsweredQuestions = {};
 
-      levelsCountersList[1] = 0;
+      //restart level2
+      CasheHelper.getIntList("scoreList")[1] = 0;
       level2AnsweredQuestions = {};
+
+      //restart level3
+      CasheHelper.getIntList("scoreList")[2] = 0;
+      level3AnsweredQuestions = {};
+
     } else if (index == 1) {
-      levelsCountersList[index] = 0;
+      //restart level2
+      CasheHelper.getIntList("scoreList")[index] = 0;
       level2AnsweredQuestions = {};
+
+      //restart level3
+      CasheHelper.getIntList("scoreList")[2] = 0;
+      level3AnsweredQuestions = {};
+
     } else if (index == 2) {
-      levelsCountersList[index] = 0;
+      CasheHelper.getIntList("scoreList")[index] = 0;
       level3AnsweredQuestions = {};
     }
-    saveList(levelsCountersList);
+
     emit(QuizRestartList());
   }
+
+   */
 
   List<dynamic> MakeACombleteList(
       {required String correcrAnswer,
@@ -95,17 +123,17 @@ class QuizCubit extends Cubit<QuizState> {
     return allAnswers;
   }
 
-  void saveList(List<int> scoreList) {
-    CasheHelper.setIntList("scoreList", scoreList);
+  void saveList(List<int> scoreList, String key) {
+    CasheHelper.setIntList(key, scoreList);
   }
 
-  List<int> getList() {
-    List<int>? myList = CasheHelper.getIntList("scoreList");
+  List<int> getList( {required String key}) {
+    List<int>? myList = CasheHelper.getIntList(key);
     return myList;
   }
 
   bool constrians(int level) {
-    List<int> myList = getList();
+    List<int> myList = getList(key: "scoreList");
     if (myList.isNotEmpty ){
       if(myList[level] >= 5){
         print(myList);

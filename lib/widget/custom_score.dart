@@ -7,7 +7,7 @@ class CustomResult extends StatelessWidget {
   int score;
   @override
   Widget build(BuildContext context) {
-    var quizCubit = QuizCubit.get(context) ;
+
     return Container(
       width: double.infinity,
       height: 430,
@@ -42,6 +42,5 @@ class CustomResult extends StatelessWidget {
         ],
       ),
     );
-    quizCubit.scoreCounter=0;
   }
 }
