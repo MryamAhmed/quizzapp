@@ -1,7 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-class  CasheHelper {
+class CasheHelper {
   static SharedPreferences? sharedPreferences;
 
   static init() async {
@@ -13,10 +12,9 @@ class  CasheHelper {
     sharedPreferences!.setStringList(key, stringList);
   }
 
-  static List<int> getIntList(String key)  {
-    List<String>? stringList = sharedPreferences!.getStringList(key);
-
-      return stringList!.map((e) => int.parse(e)).toList();
-
+  static List<int> getIntList(String key) {
+    List<String>? stringList = sharedPreferences?.getStringList(key);
+    if (stringList == null) return [];
+    return stringList.map((e) => int.parse(e)).toList();
   }
 }
