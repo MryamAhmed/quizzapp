@@ -14,21 +14,23 @@ class LevelCard extends StatefulWidget {
 }
 
 class _LevelCardState extends State<LevelCard> {
+  bool x = false;
   @override
+
   void initState() {
     super.initState();
     var levelCubit = LevelCubit.get(context);
     var quizCubit = QuizCubit.get(context);
     levelCubit.handleStars(levelScore: quizCubit.levelsCountersList[widget.level]);
+     x= quizCubit.constrians(widget.level);
+     print ('bool value $x');
   }
 
   @override
   Widget build(BuildContext context) {
     var quizCubit = QuizCubit.get(context);
     var levelCubit = LevelCubit.get(context);
-    //bool x= quizCubit.constrians(widget.level-1);
     //List<int> myList = CasheHelper.getIntList('scoreList');
-
     List<int> levelsCountersList = quizCubit.levelsCountersList;
 
     if(widget.level == 0) {
@@ -80,7 +82,7 @@ class _LevelCardState extends State<LevelCard> {
         ),
       );
     }
-    else if(levelsCountersList[widget.level-1] >= 5){
+    else if(x){
       return Center(
         child: GestureDetector(
           onTap: () {

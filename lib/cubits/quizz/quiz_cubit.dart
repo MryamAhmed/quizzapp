@@ -108,12 +108,10 @@ class QuizCubit extends Cubit<QuizState> {
   List<int> getList(){
     List<int> myList = CasheHelper.getIntList("scoreList");
       return myList;
-
   }
 
 
 
-  /*
   bool constrians(int level){
     List<int> myList = getList();
     if(myList[level] >= 5){
@@ -122,7 +120,7 @@ class QuizCubit extends Cubit<QuizState> {
       return false;
   }
 
- */
+
 
 }
 
