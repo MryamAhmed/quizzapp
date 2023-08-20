@@ -106,7 +106,20 @@ class QuizCubit extends Cubit<QuizState> {
 
   bool constrians(int level) {
     List<int> myList = getList();
-    if (myList.isNotEmpty && myList[level] >= 5) return true;
-    return false;
+    if (myList.isNotEmpty ){
+      if(myList[level] >= 5){
+        print(myList);
+        print(level);
+        return true;
+      }else {
+        print('it is less than 5');
+        return false;
+      }
+
+    }
+    else{
+      print('it is null');
+      return false;
+    }
   }
 }

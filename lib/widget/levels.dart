@@ -23,16 +23,14 @@ class _LevelCardState extends State<LevelCard> {
     var levelCubit = LevelCubit.get(context);
     var quizCubit = QuizCubit.get(context);
     levelCubit.handleStars(
-        levelScore: quizCubit.levelsCountersList[widget.level]);
-    x = quizCubit.constrians(widget.level);
+        levelScore: quizCubit.levelsCountersList[widget.level]
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     var quizCubit = QuizCubit.get(context);
     var levelCubit = LevelCubit.get(context);
-    //List<int> myList = CasheHelper.getIntList('scoreList');
-    List<int> levelsCountersList = quizCubit.levelsCountersList;
 
     if (widget.level == 0) {
       return Center(
@@ -92,7 +90,8 @@ class _LevelCardState extends State<LevelCard> {
           ),
         ),
       );
-    } else if (x) {
+    }
+    else if ( quizCubit.constrians(widget.level-1)) {
       return Center(
         child: GestureDetector(
           onTap: () {

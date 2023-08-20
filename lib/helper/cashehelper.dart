@@ -14,7 +14,7 @@ class CasheHelper {
 
   static List<int> getIntList(String key) {
     List<String>? stringList = sharedPreferences?.getStringList(key);
-    if (stringList == null) return [];
+    if (stringList == null) return [9,0,0];
     return stringList.map((e) => int.parse(e)).toList();
   }
 }
