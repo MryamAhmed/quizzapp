@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../constant.dart';
 import '../cubits/level/level_cubit.dart';
 import '../cubits/quizz/quiz_cubit.dart';
+import '../helper/cashehelper.dart';
 import '../pages/question_screen.dart';
 
 class LevelCard extends StatefulWidget {
@@ -23,7 +24,8 @@ class _LevelCardState extends State<LevelCard> {
     var levelCubit = LevelCubit.get(context);
     var quizCubit = QuizCubit.get(context);
     levelCubit.handleStars(
-        levelScore: quizCubit.levelsCountersList[widget.level]
+
+        levelScore: CasheHelper.getIntList("scoreList")[widget.level]
     );
   }
 
