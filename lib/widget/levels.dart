@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../constant.dart';
-import '../cubits/level/level_cubit.dart';
 import '../cubits/quizz/quiz_cubit.dart';
+import '../feature/levels/presentation/managr/level/level_cubit.dart';
 import '../helper/cashehelper.dart';
 import '../pages/question_screen.dart';
 
@@ -24,8 +24,7 @@ class _LevelCardState extends State<LevelCard> {
     var levelCubit = LevelCubit.get(context);
     var quizCubit = QuizCubit.get(context);
     levelCubit.handleStars(
-        levelScore: CasheHelper.getIntList("scoreList")[widget.level]
-    );
+        levelScore: CasheHelper.getIntList("scoreList")[widget.level]);
   }
 
   @override
@@ -44,7 +43,7 @@ class _LevelCardState extends State<LevelCard> {
                         levelNumber: widget.level,
                       )),
             );
-            quizCubit.levelsCountersList[widget.level] =0;
+            quizCubit.levelsCountersList[widget.level] = 0;
           },
           child: Stack(
             clipBehavior: Clip.none,
@@ -91,8 +90,7 @@ class _LevelCardState extends State<LevelCard> {
           ),
         ),
       );
-    }
-    else if ( quizCubit.constrians(widget.level-1)) {
+    } else if (quizCubit.constrians(widget.level - 1)) {
       return Center(
         child: GestureDetector(
           onTap: () {
@@ -103,7 +101,7 @@ class _LevelCardState extends State<LevelCard> {
                         levelNumber: widget.level,
                       )),
             );
-            quizCubit.levelsCountersList[widget.level] =0;
+            quizCubit.levelsCountersList[widget.level] = 0;
           },
           child: Stack(
             clipBehavior: Clip.none,
