@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import '../../helper/cashehelper.dart';
-import '../../helper/cashehelper.dart';
-import '../../helper/cashehelper.dart';
+
+import '../../../../../helper/cashehelper.dart';
+
 part 'quiz_state.dart';
 
 class QuizCubit extends Cubit<QuizState> {
@@ -21,12 +21,11 @@ class QuizCubit extends Cubit<QuizState> {
   List<int> levelsCountersList = [0, 0, 0];
   List<int> levelsCountersList2 = [0, 0, 0];
 
-  void initSets(){
+  void initSets() {
     level1AnsweredQuestions = {};
     level2AnsweredQuestions = {};
     level3AnsweredQuestions = {};
     levelsCountersList2 = [0, 0, 0];
-
   }
 
   void CountScore(
@@ -127,25 +126,23 @@ class QuizCubit extends Cubit<QuizState> {
     CasheHelper.setIntList(key, scoreList);
   }
 
-  List<int> getList( {required String key}) {
+  List<int> getList({required String key}) {
     List<int>? myList = CasheHelper.getIntList(key);
     return myList;
   }
 
   bool constrians(int level) {
     List<int> myList = getList(key: "scoreList");
-    if (myList.isNotEmpty ){
-      if(myList[level] >= 5){
+    if (myList.isNotEmpty) {
+      if (myList[level] >= 5) {
         print(myList);
         print(level);
         return true;
-      }else {
+      } else {
         print('it is less than 5');
         return false;
       }
-
-    }
-    else{
+    } else {
       print('it is null');
       return false;
     }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../constant.dart';
-import '../cubits/quizz/quiz_cubit.dart';
 import '../feature/levels/presentation/managr/level/level_cubit.dart';
+import '../feature/quiz/presentation/manager/quizz/quiz_cubit.dart';
+import '../feature/quiz/presentation/views/question_screen.dart';
 import '../helper/cashehelper.dart';
-import '../pages/question_screen.dart';
 
 class LevelCard extends StatefulWidget {
   final int level;

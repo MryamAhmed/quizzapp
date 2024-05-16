@@ -1,5 +1,5 @@
 import '../helper/api.dart';
-import '../models/question_model.dart';
+import '../feature/quiz/data/models/question_model.dart';
 
 class QuestionService{
   Future<dynamic> getQuestions() async{

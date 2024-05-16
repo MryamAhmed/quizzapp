@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../constant.dart';
-import '../cubits/quizz/quiz_cubit.dart';
-import '../feature/levels/presentation/views/levels_screen.dart';
-import '../widget/button.dart';
-import '../widget/custom_score.dart';
+import '../../../../constant.dart';
+import '../../../../widget/button.dart';
+import '../../../../widget/custom_score.dart';
+import '../../../levels/presentation/views/levels_screen.dart';
+import '../manager/quizz/quiz_cubit.dart';
 
 class ScoreScreen extends StatefulWidget {
   ScoreScreen({Key? key, required this.level}) : super(key: key);
@@ -24,8 +24,6 @@ class _ScoreScreenState extends State<ScoreScreen> {
 
     int result = cashList[widget.level];
     int newScore = quizCubit.levelsCountersList2[widget.level];
-
-    print('it is $newScore');
 
     if (newScore > result) {
       result = newScore;
@@ -65,7 +63,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
                 height: 8,
               ),
               Text(
-                '${result} out of 9 questions',
+                '$result out of 9 questions',
                 style: const TextStyle(color: Color(0xFF46BDAD)),
               ),
               const SizedBox(

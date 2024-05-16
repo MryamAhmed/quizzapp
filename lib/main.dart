@@ -4,7 +4,7 @@ import 'package:quizzles/feature/home/presentation/home_screen.dart';
 import 'package:quizzles/feature/levels/presentation/managr/level/level_cubit.dart';
 import 'package:quizzles/helper/cashehelper.dart';
 
-import 'cubits/quizz/quiz_cubit.dart';
+import 'feature/quiz/presentation/manager/quizz/quiz_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
