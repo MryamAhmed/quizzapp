@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constant.dart';
-import '../../../widget/button.dart';
+import '../../../core/widget/button.dart';
 import '../../levels/presentation/views/levels_screen.dart';
 
 class HomeScreen extends StatelessWidget {

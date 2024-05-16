@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:quizzles/feature/quiz/presentation/views/score_screen.dart';
 
 import '../../../../constant.dart';
+import '../../../../core/widget/button.dart';
 import '../../../../services/get.dart';
-import '../../../../widget/button.dart';
-import '../../../../widget/custom_question.dart';
 import '../../data/models/question_model.dart';
+import 'widget/custom_question.dart';
 
 class QuestionScreen extends StatelessWidget {
   const QuestionScreen({Key? key, required this.levelNumber}) : super(key: key);

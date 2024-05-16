@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../constant.dart';
-import '../../../../widget/button.dart';
-import '../../../../widget/custom_score.dart';
+import '../../../../core/widget/button.dart';
 import '../../../levels/presentation/views/levels_screen.dart';
+import '../../../levels/presentation/views/widget/custom_score.dart';
 import '../manager/quizz/quiz_cubit.dart';
 
 class ScoreScreen extends StatefulWidget {

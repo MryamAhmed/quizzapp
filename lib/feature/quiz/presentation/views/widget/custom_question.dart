@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quizzles/widget/question_widget.dart';
+import 'package:quizzles/feature/quiz/presentation/views/widget/question_widget.dart';
 
-import '../feature/quiz/data/models/question_model.dart';
+import '../../../data/models/question_model.dart';
 
 class CustomQuestion extends StatelessWidget {
   CustomQuestion(

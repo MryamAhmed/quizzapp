@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../constant.dart';
-import '../../../../widget/levels.dart';
+import 'widget/levels.dart';
 
 class LevelsScreen extends StatelessWidget {
   const LevelsScreen({Key? key}) : super(key: key);
