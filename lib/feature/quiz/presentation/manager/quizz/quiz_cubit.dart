@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../../helper/cashehelper.dart';
-import '../../../data/models/question_model.dart';
 import '../../../data/repos/quiz_repo.dart';
 
 part 'quiz_state.dart';
@@ -12,6 +11,12 @@ class QuizCubit extends Cubit<QuizState> {
 
   final QuizRepo quizRepo;
   int scoreCounter = 0;
+
+  @override
+  void onChange(Change<QuizState> change) {
+    super.onChange(change);
+    print("listening for change" + change.toString());
+  }
 
   static QuizCubit get(context) {
     return BlocProvider.of(context);
@@ -153,9 +158,9 @@ class QuizCubit extends Cubit<QuizState> {
 
   Future<void> getQuestions() async {
     emit(GetQuestionsLoading());
+    print('Loaded');
     var result = await quizRepo.getQuestions();
-
-    result.fold((l) => {emit(GetQuestionsFauilar(l))},
-        (r) => {emit(GetQuestionsSuccess(r))});
+    result.fold((l) => {print('fail'), emit(GetQuestionsFauilar(l))},
+        (r) => {print('succ'), emit(GetQuestionsSuccess(r))});
   }
 }

@@ -21,10 +21,13 @@ class QuizApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => getIt<QuizCubit>()),
+        BlocProvider(create: (context) => getIt<QuizCubit>()..getQuestions()),
         BlocProvider(create: (context) => LevelCubit()),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
+        theme: ThemeData(
+          useMaterial3: false,
+        ),
         debugShowCheckedModeBanner: false,
         home: HomeScreen(),
       ),

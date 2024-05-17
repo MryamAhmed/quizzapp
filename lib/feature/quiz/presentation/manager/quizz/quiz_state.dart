@@ -10,7 +10,8 @@ class QuizLevelChoice extends QuizState {}
 class QuizRestartList extends QuizState {}
 
 class GetQuestionsSuccess extends QuizState {
-  final List<QuestionModel> questions;
+  //final Map<dynamic, dynamic> questions;
+  final List<dynamic> questions;
 
   GetQuestionsSuccess(this.questions);
 }

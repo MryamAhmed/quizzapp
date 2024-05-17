@@ -4,14 +4,10 @@ import 'package:quizzles/feature/quiz/presentation/views/widget/question_widget.
 import '../../../data/models/question_model.dart';
 
 class CustomQuestion extends StatelessWidget {
-  CustomQuestion(
-      {Key? key,
-      required this.questionModel,
-      required this.length,
-      required this.level})
+  CustomQuestion({Key? key, required this.questionModel, required this.level})
       : super(key: key);
   QuestionModel questionModel;
-  dynamic length;
+
   int level;
   @override
   Widget build(BuildContext context) {

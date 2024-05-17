@@ -1,4 +1,4 @@
 class EndPoints {
-  static String baseUrl = "https://opentdb.com/api.php?amount=15";
-  static String endPoint = '&difficulty=easy&type=multiple';
+  static String baseUrl = "https://opentdb.com/api.php?";
+  static String endPoint = 'amount=15&difficulty=easy&type=multiple';
 }

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../feature/quiz/data/repos/quiz_repo.dart';
 import '../../feature/quiz/data/repos/quiz_repo_impl.dart';
 import '../../feature/quiz/presentation/manager/quizz/quiz_cubit.dart';
 import 'api/api_consumer.dart';
@@ -17,7 +18,7 @@ void setup() {
     DioConsumer(getIt()),
   );
 
-  getIt.registerSingleton<QuizRepoImpl>(
+  getIt.registerSingleton<QuizRepo>(
     QuizRepoImpl(
       getIt(),
     ),

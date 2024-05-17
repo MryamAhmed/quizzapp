@@ -4,6 +4,7 @@ import 'package:quizzles/feature/quiz/data/repos/quiz_repo.dart';
 
 import '../../../../core/errors/errors/server_exceptions.dart';
 import '../../../../core/utils/api/api_consumer.dart';
+import '../models/question_model.dart';
 
 class QuizRepoImpl extends QuizRepo {
   final ApiConsumer apiConsumer;
@@ -11,10 +12,23 @@ class QuizRepoImpl extends QuizRepo {
   QuizRepoImpl(this.apiConsumer);
 
   @override
-  Future<Either<String, dynamic>> getQuestions() async {
+  Future<Either<dynamic, dynamic>> getQuestions() async {
     try {
-      Map<dynamic, dynamic> data = await apiConsumer.get(EndPoints.endPoint);
-      return Right(data);
+      print('hello from repo');
+      Map<dynamic, dynamic> data = await apiConsumer.get(
+        EndPoints.endPoint,
+      );
+      List<dynamic> questions = [];
+
+      print('hello from repo2');
+      for (var item in data['results']) {
+        print("the for loopinside");
+        questions.add(QuestionModel.fromJson(item));
+      }
+      print('hello from repo3');
+
+      //return data;
+      return Right(questions);
     } on ServerExceptions catch (e) {
       return Left(e.message);
     }
