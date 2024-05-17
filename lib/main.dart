@@ -4,11 +4,13 @@ import 'package:quizzles/feature/home/presentation/home_screen.dart';
 import 'package:quizzles/feature/levels/presentation/managr/level/level_cubit.dart';
 import 'package:quizzles/helper/cashehelper.dart';
 
+import 'core/utils/service_locator.dart';
 import 'feature/quiz/presentation/manager/quizz/quiz_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CasheHelper.init();
+  setup();
   runApp(QuizApp());
 }
 
@@ -19,7 +21,7 @@ class QuizApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => QuizCubit()),
+        BlocProvider(create: (context) => getIt<QuizCubit>()),
         BlocProvider(create: (context) => LevelCubit()),
       ],
       child: const MaterialApp(

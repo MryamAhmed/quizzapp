@@ -2,12 +2,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../../helper/cashehelper.dart';
+import '../../../data/models/question_model.dart';
+import '../../../data/repos/quiz_repo.dart';
 
 part 'quiz_state.dart';
 
 class QuizCubit extends Cubit<QuizState> {
-  QuizCubit() : super(QuizInitial());
+  QuizCubit(this.quizRepo) : super(QuizInitial());
 
+  final QuizRepo quizRepo;
   int scoreCounter = 0;
 
   static QuizCubit get(context) {
@@ -146,5 +149,13 @@ class QuizCubit extends Cubit<QuizState> {
       print('it is null');
       return false;
     }
+  }
+
+  Future<void> getQuestions() async {
+    emit(GetQuestionsLoading());
+    var result = await quizRepo.getQuestions();
+
+    result.fold((l) => {emit(GetQuestionsFauilar(l))},
+        (r) => {emit(GetQuestionsSuccess(r))});
   }
 }
