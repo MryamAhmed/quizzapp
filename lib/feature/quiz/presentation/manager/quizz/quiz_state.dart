@@ -11,7 +11,7 @@ class QuizRestartList extends QuizState {}
 
 class GetQuestionsSuccess extends QuizState {
   //final Map<dynamic, dynamic> questions;
-  final List<dynamic> questions;
+  final List<QuestionModel> questions;
 
   GetQuestionsSuccess(this.questions);
 }

@@ -26,12 +26,14 @@ class CustomQuestion extends StatelessWidget {
               height: 8,
             ),
             Expanded(
-                child: ChoiceQuestionsListView(
-              level: level,
-              questionId: questionModel.id!,
-              correctAnswer: questionModel.correct_answer,
-              incorrectAnswersList: questionModel.incorrect_answers,
-            )),
+              //child: Text('dd'),
+              child: ChoiceQuestionsListView(
+                level: level,
+                questionId: questionModel.id ?? 1,
+                correctAnswer: questionModel.correctAnswer,
+                incorrectAnswersList: questionModel.incorrectAnswers,
+              ),
+            ),
           ],
         ),
       ),

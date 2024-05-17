@@ -44,19 +44,24 @@ class QuestionScreen extends StatelessWidget {
                       errorMessage: state.error,
                     );
                   } else if (state is GetQuestionsSuccess) {
-                    List<dynamic> questionList = state.questions;
+                    //List<dynamic> questionList = state.questions;
+                    List<QuestionModel> questionList = state.questions;
                     return ListView.builder(
                         itemCount: questionList.length,
                         itemBuilder: (BuildContext context, int index) {
+                          // return Text(
+                          //   questionList[index].toString(),
+                          // );
+                          QuestionModel question = questionList[index];
                           return CustomQuestion(
                             level: levelNumber,
+                            //questionModel: question,
                             questionModel: QuestionModel(
                               id: index,
-                              question: questionList[index]['question'],
-                              correct_answer: questionList[index]
-                                  ['correct_answer'],
-                              incorrect_answers: questionList[index]
-                                  ['incorrect_answers'],
+                              question: questionList[index].question,
+                              correctAnswer: questionList[index].correctAnswer,
+                              incorrectAnswers:
+                                  questionList[index].incorrectAnswers,
                             ),
                           );
                         });

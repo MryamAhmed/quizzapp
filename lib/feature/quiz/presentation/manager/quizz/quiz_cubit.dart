@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../../helper/cashehelper.dart';
+import '../../../data/models/question_model.dart';
 import '../../../data/repos/quiz_repo.dart';
 
 part 'quiz_state.dart';
@@ -78,7 +79,7 @@ class QuizCubit extends Cubit<QuizState> {
     }
 
     saveList(levelsCountersList, "scoreList");
-    emit(QuizLevelChoice());
+    //emit(QuizLevelChoice());
   }
 
   /*
@@ -124,7 +125,7 @@ class QuizCubit extends Cubit<QuizState> {
     }
     allAnswers.add(correcrAnswer);
 
-    emit(QuizInitial());
+    //emit(QuizInitial());
     print(allAnswers);
 
     return allAnswers;

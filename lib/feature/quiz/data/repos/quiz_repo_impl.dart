@@ -12,19 +12,21 @@ class QuizRepoImpl extends QuizRepo {
   QuizRepoImpl(this.apiConsumer);
 
   @override
-  Future<Either<dynamic, dynamic>> getQuestions() async {
+  Future<Either<dynamic, List<QuestionModel>>> getQuestions() async {
     try {
       print('hello from repo');
       Map<dynamic, dynamic> data = await apiConsumer.get(
         EndPoints.endPoint,
       );
-      List<dynamic> questions = [];
+      List<QuestionModel> questions = [];
 
       print('hello from repo2');
+
       for (var item in data['results']) {
         print("the for loopinside");
         questions.add(QuestionModel.fromJson(item));
       }
+      print('data is $questions');
       print('hello from repo3');
 
       //return data;

@@ -93,7 +93,7 @@ class ChoiceQuestionsListView extends StatefulWidget {
 
   List<dynamic> incorrectAnswersList;
   String correctAnswer;
-  int questionId;
+  int? questionId;
   int level;
 
   @override
@@ -127,21 +127,23 @@ class _ChoiceQuestionsListViewState extends State<ChoiceQuestionsListView> {
       itemCount: 4,
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
-            onTap: () {
-              currentIndex = index;
-              setState(() {});
-              quizCubit.CountScore(
-                  correcrAnswer: widget.correctAnswer,
-                  choisenAnswer: allAnswers[currentIndex],
-                  id: widget.questionId,
-                  //id: 3,
-                  levelNumber: widget.level);
-            },
-            child: Choice_questions(
-              isSelected: currentIndex == index,
-              choice: allAnswers[index],
-              number: numbers[index],
-            ));
+          onTap: () {
+            currentIndex = index;
+            setState(() {});
+            quizCubit.CountScore(
+                correcrAnswer: widget.correctAnswer,
+                choisenAnswer: allAnswers[currentIndex],
+                id: widget.questionId ?? 1,
+                //id: 3,
+                levelNumber: widget.level);
+          },
+          //child: Text('dd'),
+          child: Choice_questions(
+            isSelected: currentIndex == index,
+            choice: allAnswers[index],
+            number: numbers[index],
+          ),
+        );
       },
     );
   }
