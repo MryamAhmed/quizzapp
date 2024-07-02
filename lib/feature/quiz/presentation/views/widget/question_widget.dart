@@ -102,7 +102,7 @@ class ChoiceQuestionsListView extends StatefulWidget {
 }
 
 class _ChoiceQuestionsListViewState extends State<ChoiceQuestionsListView> {
-  int currentIndex = 0;
+  int currentIndex = -1;
   List<dynamic> numbers = ['a', 'b', 'c', 'd'];
   List<dynamic> allAnswers = [];
 
@@ -133,7 +133,7 @@ class _ChoiceQuestionsListViewState extends State<ChoiceQuestionsListView> {
             quizCubit.countScore(
                 correctAnswer: widget.correctAnswer,
                 choisenAnswer: allAnswers[currentIndex],
-                id: widget.questionId ?? 1,
+                id: widget.questionId ?? -1,
                 //id: 3,
                 levelNumber: widget.level);
           },
