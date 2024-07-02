@@ -16,7 +16,7 @@ class QuizCubit extends Cubit<QuizState> {
   @override
   void onChange(Change<QuizState> change) {
     super.onChange(change);
-    print("listening for change" + change.toString());
+    print("listening for change$change");
   }
 
   static QuizCubit get(context) {
@@ -37,14 +37,14 @@ class QuizCubit extends Cubit<QuizState> {
     levelsCountersList2 = [0, 0, 0];
   }
 
-  void CountScore(
-      {required String correcrAnswer,
+  void countScore(
+      {required String correctAnswer,
       required String choisenAnswer,
       id,
       levelNumber}) {
     if (levelNumber == 0) {
       if (!level1AnsweredQuestions.contains(id)) {
-        if (choisenAnswer == correcrAnswer) {
+        if (choisenAnswer == correctAnswer) {
           levelsCountersList[levelNumber]++;
           levelsCountersList2[levelNumber]++;
           scoreCounter++;
@@ -53,10 +53,9 @@ class QuizCubit extends Cubit<QuizState> {
       }
       print(levelsCountersList);
       print(levelNumber);
-      //CasheHelper.putData().then((value) => emit(LevelChoice()));
     } else if (levelNumber == 1) {
       if (!level2AnsweredQuestions.contains(id)) {
-        if (choisenAnswer == correcrAnswer) {
+        if (choisenAnswer == correctAnswer) {
           levelsCountersList[levelNumber]++;
           levelsCountersList2[levelNumber]++;
           scoreCounter++;
@@ -67,7 +66,7 @@ class QuizCubit extends Cubit<QuizState> {
       print(levelNumber);
     } else if (levelNumber == 2) {
       if (!level3AnsweredQuestions.contains(id)) {
-        if (choisenAnswer == correcrAnswer) {
+        if (choisenAnswer == correctAnswer) {
           levelsCountersList[levelNumber]++;
           levelsCountersList2[levelNumber]++;
           scoreCounter++;
@@ -81,40 +80,6 @@ class QuizCubit extends Cubit<QuizState> {
     saveList(levelsCountersList, "scoreList");
     //emit(QuizLevelChoice());
   }
-
-  /*
-  void restartCount({required int index}) {
-    if (index == 0) {
-      //restart level 1
-      CasheHelper.getIntList("scoreList")[index] = 0;
-      level1AnsweredQuestions = {};
-
-      //restart level2
-      CasheHelper.getIntList("scoreList")[1] = 0;
-      level2AnsweredQuestions = {};
-
-      //restart level3
-      CasheHelper.getIntList("scoreList")[2] = 0;
-      level3AnsweredQuestions = {};
-
-    } else if (index == 1) {
-      //restart level2
-      CasheHelper.getIntList("scoreList")[index] = 0;
-      level2AnsweredQuestions = {};
-
-      //restart level3
-      CasheHelper.getIntList("scoreList")[2] = 0;
-      level3AnsweredQuestions = {};
-
-    } else if (index == 2) {
-      CasheHelper.getIntList("scoreList")[index] = 0;
-      level3AnsweredQuestions = {};
-    }
-
-    emit(QuizRestartList());
-  }
-
-   */
 
   List<dynamic> MakeACombleteList(
       {required String correcrAnswer,

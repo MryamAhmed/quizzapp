@@ -31,8 +31,7 @@ class QuestionScreen extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * .79,
+            Expanded(
               child: BlocBuilder<QuizCubit, QuizState>(
                 builder: (context, state) {
                   if (state is GetQuestionsLoading) {

@@ -130,8 +130,8 @@ class _ChoiceQuestionsListViewState extends State<ChoiceQuestionsListView> {
           onTap: () {
             currentIndex = index;
             setState(() {});
-            quizCubit.CountScore(
-                correcrAnswer: widget.correctAnswer,
+            quizCubit.countScore(
+                correctAnswer: widget.correctAnswer,
                 choisenAnswer: allAnswers[currentIndex],
                 id: widget.questionId ?? 1,
                 //id: 3,

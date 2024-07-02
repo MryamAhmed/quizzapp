@@ -19,11 +19,14 @@ class CustomQuestion extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(questionModel.question,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(color: Colors.white)),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text(questionModel.question,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(color: Colors.white)),
+            ),
             const SizedBox(
-              height: 8,
+              height: 12,
             ),
             Expanded(
               //child: Text('dd'),
